@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const HeroImage = ({ image, bgCol=`transparent` }) => {
+const HeroImage = ({ image, bgCol = `transparent` }) => {
   // const img = getImage(image.localFile.childImageSharp)
   return (
     <React.Fragment>

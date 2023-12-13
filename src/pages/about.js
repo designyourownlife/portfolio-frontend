@@ -7,8 +7,12 @@ import TextContent from "../components/TextContent"
 import SocialLinks from "../constants/social_links"
 import Seo from "../components/seo"
 
-const About = (props) => {
-  const { data: { about: { nodes } }} = props;
+const About = props => {
+  const {
+    data: {
+      about: { nodes },
+    },
+  } = props
   const { title, body, hero_image, stack, bgCol, twitter } = nodes[0]
   const { lang, description, card_image } = twitter
 
@@ -75,7 +79,18 @@ export const query = graphql`
           lang
           description
           card_image {
-            src: url
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+                gatsbyImageData(
+                  placeholder: NONE
+                  layout: FULL_WIDTH
+                  formats: NO_CHANGE
+                )
+              }
+            }
             width
             height
           }

@@ -8,7 +8,11 @@ import ImageGallery from "../components/image-gallery"
 import Seo from "../components/seo"
 
 const Showcase = props => {
-  const { data: { showcase: { nodes } } } = props
+  const {
+    data: {
+      showcase: { nodes },
+    },
+  } = props
   const { title, body, hero_image, portfolio, bgCol, twitter } = nodes[0]
   const { lang, description, card_image } = twitter
 
@@ -47,7 +51,18 @@ export const query = graphql`
           lang
           description
           card_image {
-            src: url
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+                gatsbyImageData(
+                  placeholder: NONE
+                  layout: FULL_WIDTH
+                  formats: NO_CHANGE
+                )
+              }
+            }
             width
             height
           }

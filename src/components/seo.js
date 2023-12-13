@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { getSrc } from "gatsby-plugin-image"
 
 function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
   const { site } = useStaticQuery(
@@ -19,11 +20,10 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
       }
     `
   )
-
   const metaDescription = description || site.siteMetadata.description
   const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+    metaImage && metaImage.localFile
+      ? `${site.siteMetadata.siteUrl}${getSrc(metaImage.localFile)}`
       : null
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
@@ -67,16 +67,24 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
             content: `website`,
           },
           {
-            name: `twitter:creator`,
+            property: `twitter:domain`,
+            content: site.siteMetadata.siteUrl,
+          },
+          {
+            property: `twitter:creator`,
             content: site.siteMetadata.author,
           },
           {
-            name: `twitter:title`,
+            property: `twitter:title`,
             content: title,
           },
           {
-            name: `twitter:description`,
+            property: `twitter:description`,
             content: metaDescription,
+          },
+          {
+            property: `twitter:url`,
+            content: canonical,
           },
         ]
           .concat(
@@ -95,13 +103,17 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
                     content: metaImage.height,
                   },
                   {
-                    name: "twitter:card",
+                    property: "twitter:card",
                     content: "summary_large_image",
+                  },
+                  {
+                    property: "twitter:image:src",
+                    content: image,
                   },
                 ]
               : [
                   {
-                    name: "twitter:card",
+                    property: "twitter:card",
                     content: "summary",
                   },
                 ]
@@ -153,7 +165,7 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
   image: PropTypes.shape({
-    src: PropTypes.string.isRequired,
+    localFile: PropTypes.object.isRequired,
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
   }),

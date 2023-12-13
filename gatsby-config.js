@@ -93,6 +93,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        typekit: {
+          id: "dkf2lil",
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
     },

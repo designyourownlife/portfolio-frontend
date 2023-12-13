@@ -4,10 +4,13 @@ import React from "react"
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Layout extraClass="homepage" isHome={true}>
-      <Seo title="Freelance Web-Designer &amp; Frontend-Developer" />
+      <Seo
+        title="Freelance Webdesigner &amp; Frontend Developer"
+        pathname={props.location.pathname}
+      />
       <section className="home">
         <div className="video-container">
           <video

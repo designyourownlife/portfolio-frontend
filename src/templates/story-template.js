@@ -1,5 +1,5 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import HeroImage from "../components/HeroImage"
@@ -8,11 +8,15 @@ import StoryPageNav from "../components/StoryPageNav"
 import Title from "../components/Title"
 import Seo from "../components/seo"
 
-const StoryTemplate = (props) => {
-  const { data: { currStory }, pageContext, data: { twitterCard } } = props
+const StoryTemplate = props => {
+  const {
+    data: { currStory },
+    pageContext,
+    data: { twitterCard },
+  } = props
   const { bgCol, slug, title, body, excerpt, hero_image } = currStory
   const { prevSlug, nextSlug } = pageContext
-  const { card_image } = twitterCard;
+  const { card_image } = twitterCard
 
   return (
     <Layout extraClass={`story ${slug}`}>
@@ -33,7 +37,7 @@ const StoryTemplate = (props) => {
   )
 }
 
-export default StoryTemplate;
+export default StoryTemplate
 
 export const query = graphql`
   query GetSingleStory($slug: String = "") {
@@ -62,7 +66,18 @@ export const query = graphql`
     }
     twitterCard: strapiHero {
       card_image {
-        src: url
+        localFile {
+          childImageSharp {
+            fluid {
+              src
+            }
+            gatsbyImageData(
+              placeholder: NONE
+              layout: FULL_WIDTH
+              formats: NO_CHANGE
+            )
+          }
+        }
         width
         height
       }
