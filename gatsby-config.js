@@ -104,12 +104,5 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
     },
-    // {
-    //   resolve: `gatsby-plugin-google-fonts`,
-    //   options: {
-    //     fonts: [`Karla\:300,300i,400,400i,700,700i,800,800i`],
-    //     display: `swap`,
-    //   },
-    // },
   ],
 }
