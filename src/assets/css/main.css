@@ -53,15 +53,14 @@ Variables
   --clr-links-opac-50: rgba(102, 51, 153, 0.5);
   --clr-link-col-light: #dec1fb;
 
-  --ff-primary: "Calibri", Calibri, "Roboto", Roboto, "Candara", Candara,
-    -apple-system, "BlinkMacSystemFont", Segooe, "Segoe UI", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Arial",
-    sans-serif;
+  --ff-primary: "calibri", "roboto", -apple-system, "BlinkMacSystemFont",
+    "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", "Arial", sans-serif;
   /* --ff-secondary: 'Lora', serif; */
   --ff-system: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     "Arial", sans-serif;
-  --ff-mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono",
+  --ff-mono: "roboto-mono", "Menlo", "Monaco", "Consolas", "Liberation Mono",
     "Courier New", monospace;
   --transition-all: all 222ms linear;
   --transition-color: color 222ms linear;
